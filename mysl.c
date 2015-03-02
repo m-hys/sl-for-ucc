@@ -61,7 +61,6 @@ int main(int argc, char *argv[])
       if (add_D51(x) == ERR) break;
     }
     refresh();
-    for(i=0; i<4000; i++){}
   }
 
   return 0;
