@@ -8,12 +8,29 @@ ScreenType screen;
 // cursol location
 int cursolX, cursolY;
 
+// initializes
 void initscr(){
   clear();
   cursolX = 0;
   cursolY = 0;
 }
 
+void curs_set(int a){
+  switch(a){
+  case 0: //
+    printf("\033[>5h");
+    break;
+  case 1: // default
+    printf("\033[>5l");
+    break;
+  }
+}
+
+void endwin(){
+  curs_set(1);
+}
+
+// outputs
 int clear(){
   if(erase() == ERR)
     return ERR;
