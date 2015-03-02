@@ -77,8 +77,8 @@ int mvaddstr(int y, int x, char*str){
 
 int refresh(){
   int i,j;
-  printf("\033[2J");
-  printf("\033[0;0H");
+  printf("\033[2J");   // clear screen
+  printf("\033[0;0H"); // move cursol to (0,0)
   for(i=0; i<LINES; ++i){
     for(j=0; j<COLS; ++j){
       putc(screen[i][j].letter, stdout);
