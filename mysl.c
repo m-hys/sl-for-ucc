@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
     refresh();
   }
 
-  endwin();
+  //endwin();
   return 0;
 }
 

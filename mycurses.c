@@ -11,6 +11,7 @@ int cursolX, cursolY;
 // initializes
 void initscr(){
   clear();
+  printf("\033[2J");   // clear screen
   cursolX = 0;
   cursolY = 0;
 }
@@ -94,8 +95,8 @@ int mvaddstr(int y, int x, char*str){
 
 int refresh(){
   int i,j;
-  printf("\033[2J");   // clear screen
-  printf("\033[0;0H"); // move cursol to (0,0)
+  //printf("\033[2J");   // clear screen
+  printf("\033[H"); // move cursol to top left
   for(i=0; i<LINES; ++i){
     for(j=0; j<COLS; ++j){
       putc(screen[i][j].letter, stdout);
