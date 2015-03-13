@@ -17,18 +17,18 @@ void initscr(){
 
 void curs_set(int a){
   switch(a){
-  case 0: //
-    printf("\033[>5h");
+  case 0: // hide
+    printf("\033[?25l");
     break;
-  case 1: // default
-    printf("\033[>5l");
+  case 1: // display
+    printf("\033[?25h");
     break;
   }
 }
 
 void endwin(){
   curs_set(1);
-  putc('\n', stdout);
+  printf("\n\033[0m");
 }
 
 // outputs
@@ -109,14 +109,13 @@ int mvaddstr(int y, int x, char*str){
 
 int refresh(){
   int i,j;
-  char buf[LINES*(COLS+1)] = {};
+  char buf[LINES*(COLS+1)];
   printf("\033[H"); // move cursol to top left
   for(i=0; i<LINES; ++i){
     for(j=0; j<COLS; ++j){
       buf[i*(COLS+1) + j] = screen[i][j].letter;
     }
-    if(i!=LINES-1)
-      buf[(i+1)*(COLS+1) -1] = '\n';
+    buf[(i+1)*(COLS+1) -1] = '\n';
   }
   buf[LINES * (COLS+1) -1] = '\0';
   printf("%s", buf);

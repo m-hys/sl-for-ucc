@@ -26,7 +26,7 @@ int my_mvaddstr(int y, int x, char *str)
 
 void option(char *str)
 {
-  extern int ACCIDENT, FLY, LONG;
+  extern int ACCIDENT, FLY, LOGO;
 
   while (*str != '\0') {
     switch (*str++) {
@@ -42,13 +42,14 @@ void option(char *str)
 int main(int argc, char *argv[])
 {
   int x, i;
-  /*
+
   for (i = 1; i < argc; ++i) {
     if (*argv[i] == '-') {
       option(argv[i] + 1);
     }
-    }*/
+  }
   initscr();
+  curs_set(0);
 
   for (x = COLS - 1; ; --x) {
     if (LOGO == 1) {
@@ -63,7 +64,7 @@ int main(int argc, char *argv[])
     refresh();
   }
 
-  putc('\n', stdout);
+  endwin();
   return 0;
 }
 
